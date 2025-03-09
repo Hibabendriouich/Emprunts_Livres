@@ -26,6 +26,12 @@ public class LivreService implements IDao<Livre> {
         this.connexion = connexion;
     }
 
+    LivreService() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
     @Override
 public boolean create(Livre o) {
     String req = "insert into Livre (id, titre, auteur, categorie, disponible) values (null, ?, ?, ?, ?)";

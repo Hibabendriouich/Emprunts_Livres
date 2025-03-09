@@ -14,22 +14,22 @@ public class Emprunt {
     private int id;
     private Date date_emprunt;
     private Date date_retour;
-    private int id_livre;
-    private int id_etudiant;
+    private Livre livre;
+    private Etudiant etudiant;
 
-    public Emprunt(int id, Date date_emprunt, Date date_retour, int id_livre, int id_etudiant) {
+    public Emprunt(int id, Date date_emprunt, Date date_retour, Livre livre, Etudiant etudiant) {
         this.id = id;
         this.date_emprunt = date_emprunt;
         this.date_retour = date_retour;
-        this.id_livre = id_livre;
-        this.id_etudiant = id_etudiant;
+        this.livre = livre;
+        this.etudiant = etudiant;
     }
 
-    public Emprunt(Date date_emprunt, Date date_retour, int id_livre, int id_etudiant) {
+    public Emprunt(Date date_emprunt, Date date_retour, Livre livre, Etudiant etudiant) {
         this.date_emprunt = date_emprunt;
         this.date_retour = date_retour;
-        this.id_livre = id_livre;
-        this.id_etudiant = id_etudiant;
+        this.livre = livre;
+        this.etudiant = etudiant;
     }
 
     public int getId() {
@@ -56,26 +56,27 @@ public class Emprunt {
         this.date_retour = date_retour;
     }
 
-    public int getId_livre() {
-        return id_livre;
+    public Livre getLivre() {
+        return livre;
     }
 
-    public void setId_livre(int id_livre) {
-        this.id_livre = id_livre;
+    public void setLivre(Livre livre) {
+        this.livre = livre;
     }
 
-    public int getId_etudiant() {
-        return id_etudiant;
+    public Etudiant getEtudiant() {
+        return etudiant;
     }
 
-    public void setId_etudiant(int id_etudiant) {
-        this.id_etudiant = id_etudiant;
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 
     @Override
     public String toString() {
-        return "Emprunt{" + "id=" + id + ", date_emprunt=" + date_emprunt + ", date_retour=" + date_retour + ", id_livre=" + id_livre + ", id_etudiant=" + id_etudiant + '}';
+        return "Emprunt{" + "id=" + id + ", date_emprunt=" + date_emprunt + ", date_retour=" + date_retour + ", livre=" + livre + ", etudiant=" + etudiant + '}';
     }
+
     
     
     
