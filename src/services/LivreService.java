@@ -20,16 +20,17 @@ import java.util.List;
  * @author Lewey
  */
 public class LivreService implements IDao<Livre> {
-        private Connexion connexion;
-
-    public LivreService(Connexion connexion) {
-        this.connexion = connexion;
+     private Connexion connexion;
+     
+     public LivreService() {
+        connexion = Connexion.getInstance();
+    if (connexion == null || connexion.getCn() == null) {
+        System.out.println("Erreur de connexion à la base de données !");
+    } else {
+        System.out.println("Connexion réussie !");
     }
-
-    LivreService() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     
 
     @Override

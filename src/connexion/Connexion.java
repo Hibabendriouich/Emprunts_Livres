@@ -5,13 +5,16 @@
  */
 package connexion;
 
-//Classe Singleton
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author admin
+ */
 public class Connexion {
-    private static Connexion instance = null;
+    private static Connexion instance;
     private Connection cn = null;
     
     private final String url = "jdbc:mysql://localhost:3306/emprunts";
@@ -43,4 +46,3 @@ public class Connexion {
         return cn;
     }
 }
-
