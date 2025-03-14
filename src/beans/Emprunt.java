@@ -11,32 +11,32 @@ import java.util.Date;
  * @author Lewey
  */
 public class Emprunt {
-    private Date date_emprunt;
-    private Date date_retour;
+    private Date dateEmprunt;
+    private Date dateRetour;
     private Livre livre;
     private Etudiant etudiant;
 
-    public Emprunt(Date date_emprunt, Date date_retour, Livre livre, Etudiant etudiant) {
-        this.date_emprunt = date_emprunt;
-        this.date_retour = date_retour;
+    public Emprunt(Date dateEmprunt, Date dateRetour, Livre livre, Etudiant etudiant) {
+        this.dateEmprunt = dateEmprunt;
+        this.dateRetour = dateRetour;
         this.livre = livre;
         this.etudiant = etudiant;
     }
 
     public Date getDate_emprunt() {
-        return date_emprunt;
+        return dateEmprunt;
     }
 
-    public void setDate_emprunt(Date date_emprunt) {
-        this.date_emprunt = date_emprunt;
+    public void setDate_emprunt(Date dateEmprunt) {
+        this.dateEmprunt = dateEmprunt;
     }
 
     public Date getDate_retour() {
-        return date_retour;
+        return dateRetour;
     }
 
-    public void setDate_retour(Date date_retour) {
-        this.date_retour = date_retour;
+    public void setDate_retour(Date dateRetour) {
+        this.dateRetour = dateRetour;
     }
 
     public Livre getLivre() {
@@ -57,7 +57,7 @@ public class Emprunt {
 
     @Override
     public String toString() {
-        return "Emprunt{" + "date_emprunt=" + date_emprunt + ", date_retour=" + date_retour + ", livre=" + livre + ", etudiant=" + etudiant + '}';
+        return "Emprunt{" + "dateEmprunt=" + dateEmprunt + ", dateRetour=" + dateRetour + ", livre=" + livre + ", etudiant=" + etudiant + '}';
     }
 
     
