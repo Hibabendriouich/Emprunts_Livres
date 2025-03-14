@@ -59,7 +59,7 @@ CREATE TABLE emprunt (
     FOREIGN KEY (idEtudiant) REFERENCES etudiant(id) ON DELETE CASCADE,
     FOREIGN KEY (idLivre) REFERENCES livre(id) ON DELETE CASCADE
 );
-
+```
 ##Architecture
 L'application est basée sur une architecture client-serveur :
 
