@@ -16,10 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author Lewey
- */
+
 public class EmpruntService implements IDao<Emprunt> {
     private Connexion connexion;
     private EtudiantService e;
@@ -30,18 +27,37 @@ public class EmpruntService implements IDao<Emprunt> {
         e =new EtudiantService();
         l = new LivreService();
     }
+    public List<Emprunt> findByBetweenDate(Date dateEmp, Date dateRet) {
+    List<Emprunt> emprunts = new ArrayList<>();
+    String req = "select * from Emprunt where dateEmprunt between ? and ?";
+    try {
+        PreparedStatement ps = connexion.getCn().prepareStatement(req);
+        ps.setDate(1, new java.sql.Date(dateEmp.getTime()));
+        ps.setDate(2, new java.sql.Date(dateRet.getTime()));
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Livre livre = l.findById(rs.getInt("idLivre")); 
+            Etudiant etudiant = e.findById(rs.getInt("idEtudiant")); 
+            Date dateEmprunt = rs.getDate("dateEmprunt");
+            Date dateRetour = rs.getDate("dateRetour");
 
-    
-    
+            emprunts.add(new Emprunt(dateEmprunt, dateRetour, livre, etudiant));
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return emprunts;
+}
+
     @Override
-public boolean create(Emprunt o) {
-    String req = "INSERT INTO Emprunt (id_livre, id_etudiant, date_emprunt, date_retour) VALUES (?, ?, ?, ?)";
+    public boolean create(Emprunt o) {
+    String req = "INSERT INTO Emprunt (idLivre, idEtudiant, dateEmprunt, dateRetour) VALUES (?, ?, ?, ?)";
     try {
         PreparedStatement ps = connexion.getCn().prepareStatement(req);
         ps.setInt(1, o.getLivre().getId()); 
         ps.setInt(2, o.getEtudiant().getId()); 
-        ps.setDate(3, new java.sql.Date(o.getDate_emprunt().getTime())); 
-        ps.setDate(4, new java.sql.Date(o.getDate_retour().getTime())); 
+        ps.setDate(3, new java.sql.Date(o.getDateEmprunt().getTime())); 
+        ps.setDate(4, new java.sql.Date(o.getDateRetour().getTime())); 
         ps.executeUpdate();
         return true;
     } catch (SQLException e) {
@@ -52,7 +68,7 @@ public boolean create(Emprunt o) {
 
     @Override
     public boolean delete(Emprunt o) {
-        String req = "delete from Emprunt WHERE id_livre = ? and id_etudiant=?";
+        String req = "delete from Emprunt WHERE idLivre = ? and idEtudiant=?";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setInt(1,o.getLivre().getId());  
@@ -67,11 +83,11 @@ public boolean create(Emprunt o) {
 
     @Override
     public boolean update(Emprunt o) {
-        String req = "update Emprunt set date_emprunt = ?, date_retour = ?, WHERE id_livre = ? and id_etudiant";
+        String req = "update Emprunt set dateEmprunt = ?, dateRetour = ?, WHERE idLivre = ? and idEtudiant";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
-            ps.setDate(1, new java.sql.Date(o.getDate_emprunt().getTime()));  
-            ps.setDate(2, new java.sql.Date(o.getDate_retour().getTime()));   
+            ps.setDate(1, new java.sql.Date(o.getDateEmprunt().getTime()));  
+            ps.setDate(2, new java.sql.Date(o.getDateRetour().getTime()));   
             ps.setInt(3, o.getLivre().getId());    
             ps.setInt(4, o.getEtudiant().getId()); 
             ps.executeUpdate();
@@ -95,10 +111,10 @@ public boolean create(Emprunt o) {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Livre livre = l.findById(rs.getInt("id_livre"));
-                Etudiant etudiant = e.findById(rs.getInt("id_etudiant"));
-                Date dateEmprunt = rs.getDate("date_emprunt");
-                Date dateRetour = rs.getDate("date_retour");
+                Livre livre = l.findById(rs.getInt("idLivre"));
+                Etudiant etudiant = e.findById(rs.getInt("idEtudiant"));
+                Date dateEmprunt = rs.getDate("dateEmprunt");
+                Date dateRetour = rs.getDate("dateRetour");
 
             inscriptions.add(new Emprunt(dateEmprunt, dateRetour, livre, etudiant));
             }

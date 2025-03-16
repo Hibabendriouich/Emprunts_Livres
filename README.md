@@ -60,12 +60,6 @@ CREATE TABLE emprunt (
     FOREIGN KEY (idLivre) REFERENCES livre(id) ON DELETE CASCADE
 );
 ```
-### Architecture
-L'application est basée sur une architecture client-serveur :
-
-Client : Une application Java développée avec NetBeans.
-Serveur : Une base de données MySQL pour stocker et récupérer les données.
-Interface Utilisateur : Développée avec SWING pour offrir une expérience utilisateur intuitive et facile à utiliser.
 
 ### Technologies Utilisées:
 

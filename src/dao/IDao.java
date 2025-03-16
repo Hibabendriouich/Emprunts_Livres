@@ -7,10 +7,7 @@ package dao;
 
 import java.util.List;
 
-/**
- *
- * @author a
- */
+
 public interface IDao <T> {
     
     boolean create (T o);

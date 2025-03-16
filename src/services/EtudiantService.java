@@ -15,10 +15,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author AMINE
- */
 public class EtudiantService implements IDao<Etudiant> {
      private Connexion connexion;
      

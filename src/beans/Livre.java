@@ -5,10 +5,6 @@
  */
 package beans;
 
-/**
- *
- * @author Lewey
- */
 public class Livre {
     private int id;
     private String titre;
@@ -77,7 +73,12 @@ public class Livre {
 
     @Override
     public String toString() {
-        return "Livre{" + "id=" + id + ", titre=" + titre + ", auteur=" + auteur + ", categorie=" + categorie + ", disponible=" + disponible + '}';
+        if( getDisponible()){
+                    return "Livre: " + " - id=" + id + "\n - titre=" + titre + "\n -  auteur=" + auteur + "\n -  categorie=" + categorie + "\n -  Disponible";
+
+        }else{
+             return "Livre: " + " - id=" + id + "\n - titre=" + titre + "\n -  auteur=" + auteur + "\n -  categorie=" + categorie + "\n -  N'est pas disponible";
+        }
     }
     
     

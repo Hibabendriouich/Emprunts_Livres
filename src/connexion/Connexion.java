@@ -9,10 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author admin
- */
+
 public class Connexion {
     private static Connexion instance;
     private Connection cn = null;

@@ -5,10 +5,6 @@
  */
 package beans;
 
-/**
- *
- * @author Lewey
- */
 public enum ECategorie {
     roman,nouvelle,sciencefiction,policier,romance,sciences,autobiographie,politique,fantaisie
     

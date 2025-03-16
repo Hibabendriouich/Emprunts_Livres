@@ -5,10 +5,6 @@
  */
 package empruntslivres;
 
-/**
- *
- * @author Lewey
- */
 public class EmpruntsLivres {
 
     /**

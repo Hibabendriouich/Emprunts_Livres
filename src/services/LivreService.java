@@ -15,10 +15,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lewey
- */
 public class LivreService implements IDao<Livre> {
      private Connexion connexion;
      
@@ -31,7 +27,20 @@ public class LivreService implements IDao<Livre> {
     }
     }
     
-    
+public Livre rechercher(String auteur){
+  String req = "select * from Livre where auteur = ?";
+    try {
+        PreparedStatement ps = connexion.getCn().prepareStatement(req);
+        ps.setString(1,auteur);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return new Livre(rs.getInt("id"), rs.getString("titre"), rs.getString("auteur"),ECategorie.valueOf(rs.getString("categorie")),rs.getBoolean("disponible"));
+        }
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+    return null;
+}
 
     @Override
 public boolean create(Livre o) {

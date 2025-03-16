@@ -15,21 +15,21 @@ import services.EmpruntService;
 import services.EtudiantService;
 import services.LivreService;
 
-
-
-/**
- *
- * @author Lewey
- */
 public class Test {
     public static void main(String[] args) {
         EtudiantService es = new EtudiantService();
         LivreService ls = new LivreService();
         EmpruntService emps = new EmpruntService();
         
-        ls.create(new Livre("Not without my daughter", "Betty Mahmoudi", ECategorie.roman,true));
-        ls.create(new Livre("Le dernier jour d'un condamné", "Victor Hugo", ECategorie.roman,false));
+if (ls.findById(1) == null) {
+    ls.create(new Livre("Not Without My Daughter", "Betty Mahmoudi", ECategorie.roman, true));
+}
+if (ls.findById(1) == null) {
+ls.create(new Livre("Le dernier jour d'un condamné", "Victor Hugo", ECategorie.roman,false));
+}
+if (ls.findById(1) == null) {
         ls.create(new Livre("La boîte à merveilles", "Ahmed Sefrioui", ECategorie.autobiographie,true));
+}
         
         es.create(new Etudiant("Bend", "Hiba","b.hiba@gmail.com"));
         es.create(new Etudiant("Enns", "Fati","e.fati@gmail.com"));
@@ -60,7 +60,7 @@ public class Test {
         
         List<Emprunt> emprunts=emps.findAll();
         for(Emprunt em:emprunts){
-            System.out.println("- Emprunts: "+ em.getEtudiant().getNom() +"\n"+em.getEtudiant().getPrenom()+"\n"+em.getLivre().getTitre()+"\n"+em.getDate_emprunt()+ " "+em.getDate_emprunt());
+            System.out.println("- Emprunts: "+ em.getEtudiant().getNom() +"\n"+em.getEtudiant().getPrenom()+"\n"+em.getLivre().getTitre()+"\n"+em.getDateEmprunt()+ " "+em.getDateRetour());
         }
         Emprunt empruntSuppr = emps.findAll().get(0);
         emps.delete(empruntSuppr);
@@ -70,8 +70,6 @@ public class Test {
         for (Emprunt emp : emps.findAll()) {
             System.out.println("Emprunt: " + emp.getEtudiant().getNom() + " -> " + emp.getLivre().getTitre());
         }
-        
-        
         
         Etudiant etudiant = es.findById(1);
         if (etudiant != null) {
@@ -86,7 +84,21 @@ public class Test {
             System.out.println("- Nom: " +e.getNom()+"\n"+"- Prénom: "+e.getPrenom()+"\n"+"- Email: "+e.getEmail()+"\n");
         }
         
+        Livre rech = ls.rechercher("Betty Mahmoudi");
+        System.out.println(rech.getTitre());
         
+      List<Emprunt> empruntsFiltrés = emps.findByBetweenDate(dateEmprunt, dateRetour);
+if (empruntsFiltrés.isEmpty()) {
+    System.out.println("Aucun emprunt trouvé dans cette période.");
+} else {
+    System.out.println("Liste des emprunts entre " + dateEmprunt + " et " + dateRetour + " :");
+    for (Emprunt em : empruntsFiltrés) {
+        System.out.println("- Étudiant: " + em.getEtudiant().getNom() + " " + em.getEtudiant().getPrenom());
+        System.out.println("  Livre: " + em.getLivre().getTitre() + " De " + em.getLivre().getAuteur() );
+        System.out.println("  Date d'emprunt: " + em.getDateEmprunt() + " | Date de retour: " + em.getDateRetour());
     }
-    
+}
+
+   
+}
 }

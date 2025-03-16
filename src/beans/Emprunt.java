@@ -6,10 +6,6 @@
 package beans;
 import java.util.Date;
 
-/**
- *
- * @author Lewey
- */
 public class Emprunt {
     private Date dateEmprunt;
     private Date dateRetour;
@@ -23,19 +19,19 @@ public class Emprunt {
         this.etudiant = etudiant;
     }
 
-    public Date getDate_emprunt() {
+    public Date getDateEmprunt() {
         return dateEmprunt;
     }
 
-    public void setDate_emprunt(Date dateEmprunt) {
+    public void setDateEmprunt(Date dateEmprunt) {
         this.dateEmprunt = dateEmprunt;
     }
 
-    public Date getDate_retour() {
+    public Date getDateRetour() {
         return dateRetour;
     }
 
-    public void setDate_retour(Date dateRetour) {
+    public void setDateRetour(Date dateRetour) {
         this.dateRetour = dateRetour;
     }
 
@@ -57,7 +53,7 @@ public class Emprunt {
 
     @Override
     public String toString() {
-        return "Emprunt{" + "dateEmprunt=" + dateEmprunt + ", dateRetour=" + dateRetour + ", livre=" + livre + ", etudiant=" + etudiant + '}';
+        return " - Date Emprunt: " + dateEmprunt + "\n"+ " - Date Retour: " + dateRetour+ "\n" + " - Livre: " + livre.getTitre()+ "\n" + " - Etudiant=" + etudiant.getNom() + etudiant.getPrenom();
     }
 
     
