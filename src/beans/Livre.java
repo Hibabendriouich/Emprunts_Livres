@@ -74,10 +74,10 @@ public class Livre {
     @Override
     public String toString() {
         if( getDisponible()){
-                    return "Livre: " + " - id=" + id + "\n - titre=" + titre + "\n -  auteur=" + auteur + "\n -  categorie=" + categorie + "\n -  Disponible";
+                    return  id +": " + titre + "De " + auteur +" " + categorie + "  Disponible";
 
         }else{
-             return "Livre: " + " - id=" + id + "\n - titre=" + titre + "\n -  auteur=" + auteur + "\n -  categorie=" + categorie + "\n -  N'est pas disponible";
+             return id +": " + titre + "De " + auteur +" " + categorie + "  N'est pas disponible";
         }
     }
     

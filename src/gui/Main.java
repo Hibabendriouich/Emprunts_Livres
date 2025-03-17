@@ -6,6 +6,7 @@
 package gui;
 
 import javax.swing.JOptionPane;
+import services.UserService;
 
 public class Main extends javax.swing.JFrame {
 
@@ -28,8 +29,8 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        login = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         bnConnexion = new javax.swing.JButton();
@@ -38,11 +39,11 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setText("Login:");
+        login.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        login.setText("Login:");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("Mot De Passe:");
+        password.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        password.setText("Mot De Passe:");
 
         bnConnexion.setBackground(new java.awt.Color(255, 255, 255));
         bnConnexion.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
@@ -68,19 +69,19 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                             .addComponent(txtLogin)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(password)
+                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(420, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(200, 200, 200)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel2)
+                .addComponent(password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
@@ -103,14 +104,17 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bnConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnConnexionActionPerformed
-        String login = txtLogin.getText().toString();
-        String password = txtPassword.getText().toString();
-        if(login.equals("ens") && password.equals("123")){
-            MDIApplication mdi = new MDIApplication();
+        String login = txtLogin.getText().trim();
+        String password = new String(txtPassword.getPassword()).trim();
+
+        UserService userService = new UserService();
+
+        if (userService.authenticate(login, password)) {
+            MDIApplication mdi = MDIApplication.getInstance();
             mdi.setVisible(true);
             this.setVisible(false);
-        }else {
-            JOptionPane.showMessageDialog(this, "Login ou Mot De Passe incorrect!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Login ou mot de passe incorrect");
         }
     }//GEN-LAST:event_bnConnexionActionPerformed
 
@@ -151,9 +155,9 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bnConnexion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel login;
+    private javax.swing.JLabel password;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables

@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import services.EtudiantService;
 
 public class EtudiantForm extends javax.swing.JInternalFrame {
-
+private MDIApplication app;
     private EtudiantService es;
     private DefaultTableModel model;
     private static int id;
@@ -20,13 +20,16 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
      * Creates new form EtudiantForm
      */
     public EtudiantForm() {
-        initComponents();
-        this.setTitle("Gestion des étudiants.");
-        
-        es = new EtudiantService();
-        model = (DefaultTableModel) listeEtudiants.getModel();
-        load();
-    }
+    app = MDIApplication.getInstance();
+    System.out.println("MDIApplication instance: " + app);
+    initComponents();
+    this.setTitle("Gestion des étudiants.");
+    
+    es = new EtudiantService();
+    model = (DefaultTableModel) listeEtudiants.getModel();
+    load();
+}
+
 
     private void load() {
         model.setRowCount(0);
@@ -63,7 +66,7 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setDoubleBuffered(true);
+        setPreferredSize(new java.awt.Dimension(800, 700));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestion des étudiants"));
@@ -141,7 +144,7 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -188,9 +191,10 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -209,7 +213,7 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bnAddEtudiantActionPerformed
 
     private void bnDeleteEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimet cet étudiant?");
+        int response = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer cet étudiant?");
         if ( response == 0){
             es.delete(es.findById(id));
             load();

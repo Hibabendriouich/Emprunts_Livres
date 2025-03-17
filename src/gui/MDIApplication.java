@@ -5,8 +5,10 @@
  */
 package gui;
 
-public class MDIApplication extends javax.swing.JFrame {
+import javax.swing.JInternalFrame;
 
+public class MDIApplication extends javax.swing.JFrame {
+private static MDIApplication instance;
     /**
      * Creates new form MDIApplication
      */
@@ -15,6 +17,15 @@ public class MDIApplication extends javax.swing.JFrame {
         this.setTitle("Gestion des emprunts de livres");
         this.setExtendedState(MAXIMIZED_BOTH);
     }
+
+   
+    public synchronized static MDIApplication getInstance() {
+        if (instance == null) {
+            instance = new MDIApplication(); 
+        }
+        return instance; 
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,9 +40,10 @@ public class MDIApplication extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         etudiantMenuItem = new javax.swing.JMenuItem();
-        saveMenuLivres = new javax.swing.JMenuItem();
+        LivreMenuItem = new javax.swing.JMenuItem();
         saveAsMenuEmprunts = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         cutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
@@ -53,21 +65,34 @@ public class MDIApplication extends javax.swing.JFrame {
         });
         Menu.add(etudiantMenuItem);
 
-        saveMenuLivres.setMnemonic('s');
-        saveMenuLivres.setText("Livres");
-        Menu.add(saveMenuLivres);
+        LivreMenuItem.setMnemonic('s');
+        LivreMenuItem.setText("Livres");
+        LivreMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LivreMenuItemActionPerformed(evt);
+            }
+        });
+        Menu.add(LivreMenuItem);
 
         saveAsMenuEmprunts.setMnemonic('a');
         saveAsMenuEmprunts.setText("Emprunts");
+        saveAsMenuEmprunts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveAsMenuEmpruntsActionPerformed(evt);
+            }
+        });
         Menu.add(saveAsMenuEmprunts);
 
         menuBar.add(Menu);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("Statistiques");
+        editMenu.setText("Recherche");
+
+        jMenuItem1.setText("Rechercher un livre par auteur");
+        editMenu.add(jMenuItem1);
 
         cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Taux d’emprunt par catégorie");
+        cutMenuItem.setText("Filtrer les emprunts par date");
         editMenu.add(cutMenuItem);
 
         menuBar.add(editMenu);
@@ -102,10 +127,25 @@ public class MDIApplication extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void etudiantMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etudiantMenuItemActionPerformed
+closeAllInternalFrames();        
         EtudiantForm ef = new EtudiantForm();
         desktopPane.add(ef);
         ef.setVisible(true);
     }//GEN-LAST:event_etudiantMenuItemActionPerformed
+
+    private void LivreMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LivreMenuItemActionPerformed
+        closeAllInternalFrames();
+        LivreForm lf = new LivreForm();
+        desktopPane.add(lf);
+        lf.setVisible(true);
+    }//GEN-LAST:event_LivreMenuItemActionPerformed
+
+    private void saveAsMenuEmpruntsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuEmpruntsActionPerformed
+        closeAllInternalFrames();
+        EmpruntForm empf = new EmpruntForm();
+        desktopPane.add(empf);
+        empf.setVisible(true);
+    }//GEN-LAST:event_saveAsMenuEmpruntsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,8 +181,14 @@ public class MDIApplication extends javax.swing.JFrame {
             }
         });
     }
+    private void closeAllInternalFrames() {
+        for (JInternalFrame frame : desktopPane.getAllFrames()) {
+            frame.dispose();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem LivreMenuItem;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
@@ -151,9 +197,9 @@ public class MDIApplication extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem etudiantMenuItem;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem saveAsMenuEmprunts;
-    private javax.swing.JMenuItem saveMenuLivres;
     // End of variables declaration//GEN-END:variables
 
 }

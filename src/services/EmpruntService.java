@@ -51,11 +51,11 @@ public class EmpruntService implements IDao<Emprunt> {
 
     @Override
     public boolean create(Emprunt o) {
-    String req = "INSERT INTO Emprunt (idLivre, idEtudiant, dateEmprunt, dateRetour) VALUES (?, ?, ?, ?)";
+    String req = "INSERT INTO Emprunt (idEtudiant, idLivre, dateEmprunt, dateRetour) VALUES (?, ?, ?, ?)";
     try {
         PreparedStatement ps = connexion.getCn().prepareStatement(req);
-        ps.setInt(1, o.getLivre().getId()); 
-        ps.setInt(2, o.getEtudiant().getId()); 
+        ps.setInt(1, o.getEtudiant().getId()); 
+        ps.setInt(2, o.getLivre().getId()); 
         ps.setDate(3, new java.sql.Date(o.getDateEmprunt().getTime())); 
         ps.setDate(4, new java.sql.Date(o.getDateRetour().getTime())); 
         ps.executeUpdate();
