@@ -6,18 +6,52 @@
 package gui;
 
 import beans.Livre;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import services.LivreService;
 
-public class RechercheLivreAuteur extends javax.swing.JInternalFrame {
+public class RechercheLivreAuteurForm extends javax.swing.JInternalFrame {
+
+    private LivreService ls;
+    private DefaultTableModel model;
 
     /**
      * Creates new form RechercheLivreAuteur
      */
-    public RechercheLivreAuteur() {
+    public RechercheLivreAuteurForm() {
         MDIApplication app = MDIApplication.getInstance();
         initComponents();
-        
+        ls = new LivreService();
+
+        model = new DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Titre", "Auteur", "Catégorie"
+                }
+        );
+
+        tableRecherche.setModel(model);
+        load();
+
+    }
+
+    private void load() {
+        List<Livre> livres = ls.findAll();
+
+        model.setRowCount(0);
+        for (Livre livre : livres) {
+            model.addRow(new Object[]{
+                livre.getTitre(),
+                livre.getAuteur(),
+                livre.getCategorie().name()
+            });
+        }
+
+        if (livres.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Aucun livre trouvé.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     /**
@@ -60,18 +94,18 @@ public class RechercheLivreAuteur extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtRechercherAuteur)
-                .addGap(18, 18, 18)
-                .addComponent(txtAuteurRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(47, 47, 47)
+                .addComponent(txtRechercherAuteur, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtAuteurRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(btnRechercherLivre)
-                .addGap(143, 143, 143))
+                .addGap(183, 183, 183))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAuteurRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRechercherAuteur)
@@ -82,7 +116,6 @@ public class RechercheLivreAuteur extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des livres résultants de la recherche", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
 
-        tableRecherche.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         tableRecherche.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -98,16 +131,15 @@ public class RechercheLivreAuteur extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91))
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,14 +155,35 @@ public class RechercheLivreAuteur extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(307, 307, 307))
+                .addGap(636, 636, 636))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRechercherLivreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechercherLivreActionPerformed
-        
+        String auteurRecherche = txtAuteurRechercher.getText().trim();
+
+        if (auteurRecherche.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Veuillez entrer un nom d'auteur.", "Erreur", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        List<Livre> livresTrouves = ls.rechercherLivreParAuteur(auteurRecherche);
+
+        model.setRowCount(0);
+
+        for (Livre livre : livresTrouves) {
+            model.addRow(new Object[]{
+                livre.getTitre(),
+                livre.getAuteur(),
+                livre.getCategorie().name()
+            });
+        }
+
+        if (livresTrouves.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Aucun livre trouvé pour cet auteur.", "Résultat de la recherche", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnRechercherLivreActionPerformed
 
 

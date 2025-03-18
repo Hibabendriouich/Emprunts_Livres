@@ -5,7 +5,6 @@
  */
 package services;
 
-
 import beans.User;
 import connexion.Connexion;
 import dao.IUserDao;
@@ -14,9 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
 public class UserService implements IUserDao {
+
     private Connexion connexion;
 
     public UserService() {

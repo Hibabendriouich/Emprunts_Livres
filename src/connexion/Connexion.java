@@ -9,11 +9,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class Connexion {
+
     private static Connexion instance;
     private Connection cn = null;
-    
+
     private final String url = "jdbc:mysql://localhost:3306/emprunts";
     private final String login = "root";
     private final String password = "";

@@ -6,6 +6,7 @@
 package beans;
 
 public class Etudiant {
+
     private int id;
     private String nom;
     private String prenom;
@@ -56,15 +57,9 @@ public class Etudiant {
         this.email = email;
     }
 
-    
     @Override
     public String toString() {
-        return   nom + prenom ;
+        return nom + prenom;
     }
-    
-    
-    
-    
-    
-    
+
 }

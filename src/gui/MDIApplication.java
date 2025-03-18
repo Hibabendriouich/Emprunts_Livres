@@ -8,7 +8,9 @@ package gui;
 import javax.swing.JInternalFrame;
 
 public class MDIApplication extends javax.swing.JFrame {
-private static MDIApplication instance;
+
+    private static MDIApplication instance;
+
     /**
      * Creates new form MDIApplication
      */
@@ -18,14 +20,12 @@ private static MDIApplication instance;
         this.setExtendedState(MAXIMIZED_BOTH);
     }
 
-   
     public synchronized static MDIApplication getInstance() {
         if (instance == null) {
-            instance = new MDIApplication(); 
+            instance = new MDIApplication();
         }
-        return instance; 
+        return instance;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,8 +43,8 @@ private static MDIApplication instance;
         LivreMenuItem = new javax.swing.JMenuItem();
         saveAsMenuEmprunts = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        cutMenuItem = new javax.swing.JMenuItem();
+        rechercheMenuItem = new javax.swing.JMenuItem();
+        FiltrerMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -88,12 +88,22 @@ private static MDIApplication instance;
         editMenu.setMnemonic('e');
         editMenu.setText("Recherche");
 
-        jMenuItem1.setText("Rechercher un livre par auteur");
-        editMenu.add(jMenuItem1);
+        rechercheMenuItem.setText("Rechercher un livre par auteur");
+        rechercheMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechercheMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(rechercheMenuItem);
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Filtrer les emprunts par date");
-        editMenu.add(cutMenuItem);
+        FiltrerMenuItem.setMnemonic('t');
+        FiltrerMenuItem.setText("Filtrer les emprunts par date");
+        FiltrerMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltrerMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(FiltrerMenuItem);
 
         menuBar.add(editMenu);
 
@@ -127,7 +137,7 @@ private static MDIApplication instance;
     }// </editor-fold>//GEN-END:initComponents
 
     private void etudiantMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_etudiantMenuItemActionPerformed
-closeAllInternalFrames();        
+        closeAllInternalFrames();
         EtudiantForm ef = new EtudiantForm();
         desktopPane.add(ef);
         ef.setVisible(true);
@@ -146,6 +156,21 @@ closeAllInternalFrames();
         desktopPane.add(empf);
         empf.setVisible(true);
     }//GEN-LAST:event_saveAsMenuEmpruntsActionPerformed
+
+    private void rechercheMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheMenuItemActionPerformed
+        closeAllInternalFrames();
+        RechercheLivreAuteurForm r = new RechercheLivreAuteurForm();
+        desktopPane.add(r);
+        r.setVisible(true);
+
+    }//GEN-LAST:event_rechercheMenuItemActionPerformed
+
+    private void FiltrerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltrerMenuItemActionPerformed
+        closeAllInternalFrames();
+        FilterEmpruntForm f = new FilterEmpruntForm();
+        desktopPane.add(f);
+        f.setVisible(true);
+    }//GEN-LAST:event_FiltrerMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +206,7 @@ closeAllInternalFrames();
             }
         });
     }
+
     private void closeAllInternalFrames() {
         for (JInternalFrame frame : desktopPane.getAllFrames()) {
             frame.dispose();
@@ -188,17 +214,17 @@ closeAllInternalFrames();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem FiltrerMenuItem;
     private javax.swing.JMenuItem LivreMenuItem;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem etudiantMenuItem;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem rechercheMenuItem;
     private javax.swing.JMenuItem saveAsMenuEmprunts;
     // End of variables declaration//GEN-END:variables
 

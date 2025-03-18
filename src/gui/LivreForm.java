@@ -12,8 +12,10 @@ import javax.swing.table.DefaultTableModel;
 import services.LivreService;
 
 public class LivreForm extends javax.swing.JInternalFrame {
+
     private LivreService ls;
     private DefaultTableModel model;
+
     /**
      * Creates new form LivreForm
      */
@@ -24,8 +26,6 @@ public class LivreForm extends javax.swing.JInternalFrame {
         model = (DefaultTableModel) livreList.getModel();
         loadLivre();
     }
-    
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -222,30 +222,29 @@ public class LivreForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtAuteurActionPerformed
 
     private void bnAddLivreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnAddLivreActionPerformed
-    String titre = txtTitre.getText();
-    String auteur = txtAuteur.getText();
-    String selectedCategory = (String) listCategorie.getSelectedItem();
-    ECategorie categorie = ECategorie.valueOf(selectedCategory);
+        String titre = txtTitre.getText();
+        String auteur = txtAuteur.getText();
+        String selectedCategory = (String) listCategorie.getSelectedItem();
+        ECategorie categorie = ECategorie.valueOf(selectedCategory);
 
-    
-    if (titre.isEmpty() || auteur.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Le titre et l'auteur sont obligatoires.");
-        return;
-    }
-    
-    boolean disponible = oui.isSelected();
-    
-    if (ls.create(new Livre(titre, auteur, categorie, disponible))) {
-        JOptionPane.showMessageDialog(this, "Livre enregistré avec succès!");
-    } else {
-        JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement du livre.");
-    }
-    loadLivre();
+        if (titre.isEmpty() || auteur.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Le titre et l'auteur sont obligatoires.");
+            return;
+        }
+
+        boolean disponible = oui.isSelected();
+
+        if (ls.create(new Livre(titre, auteur, categorie, disponible))) {
+            JOptionPane.showMessageDialog(this, "Livre enregistré avec succès!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement du livre.");
+        }
+        loadLivre();
     }//GEN-LAST:event_bnAddLivreActionPerformed
-    void loadLivre(){
+    void loadLivre() {
         model.setRowCount(0);
         for (Livre l : ls.findAll()) {
-            model.addRow(new Object[]{l.getId(),l.getTitre(), l.getAuteur(), l.getCategorie(), l.getDisponible()});
+            model.addRow(new Object[]{l.getId(), l.getTitre(), l.getAuteur(), l.getCategorie(), l.getDisponible()});
         }
     }
     private void ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ouiActionPerformed
@@ -257,17 +256,17 @@ public class LivreForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listCategorieActionPerformed
 
     private void bnDeleteLivreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteLivreActionPerformed
-    int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer ce livre?");
-    if (response == 0) {
-        int selectedRow = livreList.getSelectedRow(); 
-        if (selectedRow != -1) {
-            int id = (int) livreList.getValueAt(selectedRow, 0); 
-            ls.delete(ls.findById(id));
-            loadLivre();
-        } else {
-            JOptionPane.showMessageDialog(this, "Aucun livre sélectionné.");
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer ce livre?");
+        if (response == 0) {
+            int selectedRow = livreList.getSelectedRow();
+            if (selectedRow != -1) {
+                int id = (int) livreList.getValueAt(selectedRow, 0);
+                ls.delete(ls.findById(id));
+                loadLivre();
+            } else {
+                JOptionPane.showMessageDialog(this, "Aucun livre sélectionné.");
+            }
         }
-    }
     }//GEN-LAST:event_bnDeleteLivreActionPerformed
 
 

@@ -11,7 +11,8 @@ import javax.swing.table.DefaultTableModel;
 import services.EtudiantService;
 
 public class EtudiantForm extends javax.swing.JInternalFrame {
-private MDIApplication app;
+
+    private MDIApplication app;
     private EtudiantService es;
     private DefaultTableModel model;
     private static int id;
@@ -20,16 +21,15 @@ private MDIApplication app;
      * Creates new form EtudiantForm
      */
     public EtudiantForm() {
-    app = MDIApplication.getInstance();
-    System.out.println("MDIApplication instance: " + app);
-    initComponents();
-    this.setTitle("Gestion des étudiants.");
-    
-    es = new EtudiantService();
-    model = (DefaultTableModel) listeEtudiants.getModel();
-    load();
-}
+        app = MDIApplication.getInstance();
+        System.out.println("MDIApplication instance: " + app);
+        initComponents();
+        this.setTitle("Gestion des étudiants.");
 
+        es = new EtudiantService();
+        model = (DefaultTableModel) listeEtudiants.getModel();
+        load();
+    }
 
     private void load() {
         model.setRowCount(0);
@@ -213,8 +213,8 @@ private MDIApplication app;
     }//GEN-LAST:event_bnAddEtudiantActionPerformed
 
     private void bnDeleteEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this,"Voulez-vous vraiment supprimer cet étudiant?");
-        if ( response == 0){
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer cet étudiant?");
+        if (response == 0) {
             es.delete(es.findById(id));
             load();
         }
@@ -228,20 +228,20 @@ private MDIApplication app;
     }//GEN-LAST:event_listeEtudiantsMouseClicked
 
     private void bnUpdateEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnUpdateEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this,"Voulez-vous modifier les informations de cet étudiant?");
-        if ( response == 0){
-        String nom = txtNom.getText().toString();
-        String prenom = txtPrenom.getText().toString();
-        String email = txtEmail.getText().toString();
-        if (es.update(new Etudiant(id, nom, prenom, email))) {
-            JOptionPane.showMessageDialog(this, "Inforrmations mises à jour avec succès!");
-            load();
-        } else {
-            JOptionPane.showConfirmDialog(this, "Echec de mise à jour.");
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous modifier les informations de cet étudiant?");
+        if (response == 0) {
+            String nom = txtNom.getText().toString();
+            String prenom = txtPrenom.getText().toString();
+            String email = txtEmail.getText().toString();
+            if (es.update(new Etudiant(id, nom, prenom, email))) {
+                JOptionPane.showMessageDialog(this, "Inforrmations mises à jour avec succès!");
+                load();
+            } else {
+                JOptionPane.showConfirmDialog(this, "Echec de mise à jour.");
+            }
+
         }
-            
-        }
-        
+
     }//GEN-LAST:event_bnUpdateEtudiantActionPerformed
 
 

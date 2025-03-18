@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package beans;
+
 import java.util.Date;
 
 public class Emprunt {
+
     private Date dateEmprunt;
     private Date dateRetour;
     private Livre livre;
@@ -53,9 +55,7 @@ public class Emprunt {
 
     @Override
     public String toString() {
-        return " - Date Emprunt: " + dateEmprunt + "\n"+ " - Date Retour: " + dateRetour+ "\n" + " - Livre: " + livre.getTitre()+ "\n" + " - Etudiant=" + etudiant.getNom() + etudiant.getPrenom();
+        return " - Date Emprunt: " + dateEmprunt + "\n" + " - Date Retour: " + dateRetour + "\n" + " - Livre: " + livre.getTitre() + "\n" + " - Etudiant=" + etudiant.getNom() + etudiant.getPrenom();
     }
 
-    
-    
 }

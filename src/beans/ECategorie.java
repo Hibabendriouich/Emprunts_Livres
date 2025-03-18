@@ -6,6 +6,7 @@
 package beans;
 
 public enum ECategorie {
-    roman,nouvelle,autobiographie,policier,romance
-    
+
+    roman, nouvelle, autobiographie, policier, romance
+
 }

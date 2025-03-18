@@ -185,7 +185,7 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     void loadLivre() {
-        listLivreEmprunt.removeAllItems(); 
+        listLivreEmprunt.removeAllItems();
         for (Livre l : ls.findAll()) {
             listLivreEmprunt.addItem(l);
         }
@@ -198,23 +198,23 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         }
     }
     private void bnSaveEmpruntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnSaveEmpruntActionPerformed
-    Livre livre = (Livre) listLivreEmprunt.getSelectedItem();  
-    Etudiant etudiant = (Etudiant) listEtudiantEmprunt.getSelectedItem();
-    Date dateEmprunt = date_Emprunt.getDate();
-    Date dateRetour = date_Retour.getDate();
+        Livre livre = (Livre) listLivreEmprunt.getSelectedItem();
+        Etudiant etudiant = (Etudiant) listEtudiantEmprunt.getSelectedItem();
+        Date dateEmprunt = date_Emprunt.getDate();
+        Date dateRetour = date_Retour.getDate();
 
-    if (livre == null || etudiant == null || dateEmprunt == null || dateRetour == null) {
-        JOptionPane.showMessageDialog(this, "Veuillez renseigner tous les champs.");
-        return;
-    }
+        if (livre == null || etudiant == null || dateEmprunt == null || dateRetour == null) {
+            JOptionPane.showMessageDialog(this, "Veuillez renseigner tous les champs.");
+            return;
+        }
 
-    if (emps.create(new Emprunt(dateEmprunt, dateRetour, livre, etudiant))) {
-        JOptionPane.showMessageDialog(this, "Emprunt enregistré avec succès!");
-    } else {
-        JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'emprunt.");
-    }
+        if (emps.create(new Emprunt(dateEmprunt, dateRetour, livre, etudiant))) {
+            JOptionPane.showMessageDialog(this, "Emprunt enregistré avec succès!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'emprunt.");
+        }
 
-    load();
+        load();
     }//GEN-LAST:event_bnSaveEmpruntActionPerformed
 
     void load() {

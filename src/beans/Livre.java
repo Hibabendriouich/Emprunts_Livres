@@ -6,6 +6,7 @@
 package beans;
 
 public class Livre {
+
     private int id;
     private String titre;
     private String auteur;
@@ -26,9 +27,11 @@ public class Livre {
         this.categorie = categorie;
         this.disponible = disponible;
     }
+
     public boolean isDisponible() {
         return disponible;
     }
+
     public int getId() {
         return id;
     }
@@ -69,17 +72,14 @@ public class Livre {
         this.disponible = disponible;
     }
 
-    
-
     @Override
     public String toString() {
-        if( getDisponible()){
-                    return  id +": " + titre + "De " + auteur +" " + categorie + "  Disponible";
+        if (getDisponible()) {
+            return id + ": " + titre + "De " + auteur + " " + categorie + "  Disponible";
 
-        }else{
-             return id +": " + titre + "De " + auteur +" " + categorie + "  N'est pas disponible";
+        } else {
+            return id + ": " + titre + "De " + auteur + " " + categorie + "  N'est pas disponible";
         }
     }
-    
-    
+
 }

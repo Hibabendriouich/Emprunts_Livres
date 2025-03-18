@@ -16,16 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EtudiantService implements IDao<Etudiant> {
-     private Connexion connexion;
-     
-     public EtudiantService() {
+
+    private Connexion connexion;
+
+    public EtudiantService() {
         connexion = Connexion.getInstance();
     }
-    
 
     @Override
     public boolean create(Etudiant o) {
-        String req = "insert into Etudiant (id, nom, prenom,email) values (null, ?, ?, ?)"; 
+        String req = "insert into Etudiant (id, nom, prenom,email) values (null, ?, ?, ?)";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setString(1, o.getNom());
@@ -41,8 +41,8 @@ public class EtudiantService implements IDao<Etudiant> {
 
     @Override
     public boolean delete(Etudiant o) {
-        String req = "delete from Etudiant where id = ?"; 
-       try {
+        String req = "delete from Etudiant where id = ?";
+        try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setInt(1, o.getId());
             ps.executeUpdate();
@@ -55,7 +55,7 @@ public class EtudiantService implements IDao<Etudiant> {
 
     @Override
     public boolean update(Etudiant o) {
-        String req = "update etudiant set nom = ?, prenom = ?, email = ? where id  = ?"; 
+        String req = "update etudiant set nom = ?, prenom = ?, email = ? where id  = ?";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setString(1, o.getNom());
@@ -72,13 +72,14 @@ public class EtudiantService implements IDao<Etudiant> {
 
     @Override
     public Etudiant findById(int id) {
-        String req = "select * from Etudiant where id  = ?"; 
+        String req = "select * from Etudiant where id  = ?";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next())
-                return new Etudiant(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"),rs.getString("email"));
+            if (rs.next()) {
+                return new Etudiant(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -87,17 +88,18 @@ public class EtudiantService implements IDao<Etudiant> {
 
     @Override
     public List<Etudiant> findAll() {
-        List<Etudiant>  etudiants = new ArrayList<>();
-        String req = "select * from Etudiant"; 
+        List<Etudiant> etudiants = new ArrayList<>();
+        String req = "select * from Etudiant";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ResultSet rs = ps.executeQuery();
-            while (rs.next())
+            while (rs.next()) {
                 etudiants.add(new Etudiant(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email")));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return etudiants;
     }
-    
+
 }
