@@ -75,10 +75,10 @@ public class Livre {
     @Override
     public String toString() {
         if (getDisponible()) {
-            return id + ": " + titre + "De " + auteur + " " + categorie + "  Disponible";
+            return id + ": " + titre + " De " + auteur + " " + categorie + "  Disponible";
 
         } else {
-            return id + ": " + titre + "De " + auteur + " " + categorie + "  N'est pas disponible";
+            return id + ": " + titre + " De " + auteur + " " + categorie + "  N'est pas disponible";
         }
     }
 
