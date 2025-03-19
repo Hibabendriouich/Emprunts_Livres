@@ -8,8 +8,11 @@ package gui;
 import beans.Emprunt;
 import beans.Etudiant;
 import beans.Livre;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import services.EmpruntService;
 import services.EtudiantService;
@@ -35,6 +38,7 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         loadLivre();
         loadEtudiant();
         load();
+        
     }
 
     /**
@@ -67,19 +71,26 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(800, 700));
         setPreferredSize(new java.awt.Dimension(800, 700));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des empruns", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(242, 245, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des empruns", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Livre:");
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Etudiant:");
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Date Emprunt:");
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Date Retour:");
 
+        listLivreEmprunt.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         listLivreEmprunt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Not Without My Daughter", "Le Dernier Jour D'un Condmané", "La boîte à merveilles" }));
 
+        bnSaveEmprunt.setBackground(new java.awt.Color(0, 204, 51));
+        bnSaveEmprunt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         bnSaveEmprunt.setText("Enregistrer");
         bnSaveEmprunt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +98,7 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
             }
         });
 
+        listEtudiantEmprunt.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         listEtudiantEmprunt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hiba Bend", "Fati Enn", "Mery Abbadi" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -117,29 +129,27 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(listLivreEmprunt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(listEtudiantEmprunt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(date_Emprunt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(listLivreEmprunt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(listEtudiantEmprunt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(date_Emprunt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(date_Retour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bnSaveEmprunt)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(242, 245, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des emprunts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
 
         listEmprunt.setModel(new javax.swing.table.DefaultTableModel(
@@ -197,6 +207,7 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
             listEtudiantEmprunt.addItem(e);
         }
     }
+    
     private void bnSaveEmpruntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnSaveEmpruntActionPerformed
         Livre livre = (Livre) listLivreEmprunt.getSelectedItem();
         Etudiant etudiant = (Etudiant) listEtudiantEmprunt.getSelectedItem();
@@ -204,14 +215,14 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         Date dateRetour = date_Retour.getDate();
 
         if (livre == null || etudiant == null || dateEmprunt == null || dateRetour == null) {
-            JOptionPane.showMessageDialog(this, "Veuillez renseigner tous les champs.");
+            JOptionPane.showMessageDialog(this, "Veuillez renseigner tous les champs.","Avertissement", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if (emps.create(new Emprunt(dateEmprunt, dateRetour, livre, etudiant))) {
-            JOptionPane.showMessageDialog(this, "Emprunt enregistré avec succès!");
+            JOptionPane.showMessageDialog(this, "Emprunt enregistré avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'emprunt.");
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'emprunt.","Erreur", JOptionPane.ERROR_MESSAGE);
         }
 
         load();

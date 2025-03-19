@@ -90,13 +90,17 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(800, 700));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtre Emprunts par Date", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(242, 245, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtre Emprunts par Date", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
 
+        txtDateDebut.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtDateDebut.setText("Date Début:");
 
+        txtDateFin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtDateFin.setText("Date Fin:");
 
+        btnFiltrerParDate.setBackground(new java.awt.Color(0, 153, 255));
+        btnFiltrerParDate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnFiltrerParDate.setText("Filtrer");
         btnFiltrerParDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,9 +146,10 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des emprunts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(242, 245, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des emprunts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
 
+        listEmprunt.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         listEmprunt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

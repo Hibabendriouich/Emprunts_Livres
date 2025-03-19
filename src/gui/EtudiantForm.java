@@ -68,8 +68,8 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(800, 700));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestion des étudiants"));
+        jPanel1.setBackground(new java.awt.Color(242, 245, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des étudiants", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Nom:");
@@ -80,7 +80,8 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Email:");
 
-        bnAddEtudiant.setBackground(new java.awt.Color(255, 255, 255));
+        bnAddEtudiant.setBackground(new java.awt.Color(0, 204, 0));
+        bnAddEtudiant.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         bnAddEtudiant.setText("Ajouter");
         bnAddEtudiant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +89,8 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
             }
         });
 
+        bnDeleteEtudiant.setBackground(new java.awt.Color(255, 0, 51));
+        bnDeleteEtudiant.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         bnDeleteEtudiant.setText("Supprimer");
         bnDeleteEtudiant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +98,8 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
             }
         });
 
+        bnUpdateEtudiant.setBackground(new java.awt.Color(255, 204, 0));
+        bnUpdateEtudiant.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         bnUpdateEtudiant.setText("Modifier");
         bnUpdateEtudiant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +129,7 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bnUpdateEtudiant))
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,9 +152,10 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(242, 245, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des étudiants:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
 
+        listeEtudiants.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         listeEtudiants.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -205,15 +211,15 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
         String prenom = txtPrenom.getText().toString();
         String email = txtEmail.getText().toString();
         if (es.create(new Etudiant(nom, prenom, email))) {
-            JOptionPane.showMessageDialog(this, "Etudiant enregistré avec succès!");
+            JOptionPane.showMessageDialog(this, "Etudiant enregistré avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
             load();
         } else {
-            JOptionPane.showConfirmDialog(this, "Echec d'enregistrement.");
+            JOptionPane.showConfirmDialog(this, "Echec d'enregistrement.","Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bnAddEtudiantActionPerformed
 
     private void bnDeleteEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer cet étudiant?");
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer cet étudiant?","Avertissement", JOptionPane.WARNING_MESSAGE);
         if (response == 0) {
             es.delete(es.findById(id));
             load();
@@ -228,16 +234,16 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listeEtudiantsMouseClicked
 
     private void bnUpdateEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnUpdateEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous modifier les informations de cet étudiant?");
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous modifier les informations de cet étudiant?","Avertissement", JOptionPane.WARNING_MESSAGE);
         if (response == 0) {
             String nom = txtNom.getText().toString();
             String prenom = txtPrenom.getText().toString();
             String email = txtEmail.getText().toString();
             if (es.update(new Etudiant(id, nom, prenom, email))) {
-                JOptionPane.showMessageDialog(this, "Inforrmations mises à jour avec succès!");
+                JOptionPane.showMessageDialog(this, "Inforrmations mises à jour avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
                 load();
             } else {
-                JOptionPane.showConfirmDialog(this, "Echec de mise à jour.");
+                JOptionPane.showConfirmDialog(this, "Echec de mise à jour.","Erreur", JOptionPane.ERROR_MESSAGE);
             }
 
         }

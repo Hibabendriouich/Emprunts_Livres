@@ -59,15 +59,19 @@ public class LivreForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(800, 700));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des livres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(242, 245, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des livres", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Titre:");
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Auteur: ");
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Catégorie:");
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Disponible:");
 
         txtAuteur.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +80,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
             }
         });
 
+        listCategorie.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         listCategorie.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "roman", "nouvelle", "autobiographie", "policier", "romance" }));
         listCategorie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +99,8 @@ public class LivreForm extends javax.swing.JInternalFrame {
         buttonGroup1.add(non);
         non.setText("Non");
 
+        bnAddLivre.setBackground(new java.awt.Color(20, 186, 20));
+        bnAddLivre.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         bnAddLivre.setText("Ajouter");
         bnAddLivre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +108,8 @@ public class LivreForm extends javax.swing.JInternalFrame {
             }
         });
 
+        bnDeleteLivre.setBackground(new java.awt.Color(255, 51, 51));
+        bnDeleteLivre.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         bnDeleteLivre.setText("Supprimer");
         bnDeleteLivre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,9 +178,10 @@ public class LivreForm extends javax.swing.JInternalFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des livres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(242, 245, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des livres", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
 
+        livreList.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         livreList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -194,7 +204,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -228,16 +238,16 @@ public class LivreForm extends javax.swing.JInternalFrame {
         ECategorie categorie = ECategorie.valueOf(selectedCategory);
 
         if (titre.isEmpty() || auteur.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Le titre et l'auteur sont obligatoires.");
+            JOptionPane.showMessageDialog(this, "Le titre et l'auteur sont obligatoires.","Avertissement", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         boolean disponible = oui.isSelected();
 
         if (ls.create(new Livre(titre, auteur, categorie, disponible))) {
-            JOptionPane.showMessageDialog(this, "Livre enregistré avec succès!");
+            JOptionPane.showMessageDialog(this, "Livre enregistré avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement du livre.");
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement du livre.","Erreur", JOptionPane.ERROR_MESSAGE);
         }
         loadLivre();
     }//GEN-LAST:event_bnAddLivreActionPerformed
@@ -256,7 +266,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listCategorieActionPerformed
 
     private void bnDeleteLivreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteLivreActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer ce livre?");
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer ce livre?","Information", JOptionPane.INFORMATION_MESSAGE);
         if (response == 0) {
             int selectedRow = livreList.getSelectedRow();
             if (selectedRow != -1) {
@@ -264,7 +274,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
                 ls.delete(ls.findById(id));
                 loadLivre();
             } else {
-                JOptionPane.showMessageDialog(this, "Aucun livre sélectionné.");
+                JOptionPane.showMessageDialog(this, "Aucun livre sélectionné.","Avertissement", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_bnDeleteLivreActionPerformed
