@@ -51,6 +51,9 @@ public class MDIApplication extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        desktopPane.setBackground(new java.awt.Color(215, 235, 255));
+
+        menuBar.setBackground(new java.awt.Color(204, 255, 255));
         menuBar.setMaximumSize(new java.awt.Dimension(300, 32769));
 
         Menu.setMnemonic('f');
