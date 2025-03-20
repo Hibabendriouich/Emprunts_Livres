@@ -211,24 +211,39 @@ public class Main extends javax.swing.JFrame {
     private void pwdforgottenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pwdforgottenMouseClicked
       String login = JOptionPane.showInputDialog(this, "Veuillez saisir votre login :");
 
-    if (login != null && !login.trim().isEmpty()) {
-        UserService userService = new UserService();
+        if (login != null && !login.trim().isEmpty()) {
+            UserService userService = new UserService();
 
-        if (userService.userExists(login)) {
-            String newPassword = generateTemporaryPassword();
-                        if (userService.updatePassword(login, newPassword)) {
-                EmailSender.sendEmail(login, newPassword);
-                
-                JOptionPane.showMessageDialog(this, "Un nouveau mot de passe temporaire a été envoyé à votre adresse email.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            if (userService.userExists(login)) {
+
+                String question = userService.getSecurityQuestion(login);
+
+                if (question != null) {
+
+                    String reponse = JOptionPane.showInputDialog(this, "Question de sécurité : " + question + "\nVeuillez entrer votre réponse :");
+
+                    if (reponse != null && userService.verifySecurityQuestion(login, reponse)) {
+
+                        String newPassword = JOptionPane.showInputDialog(this, "Entrez votre nouveau mot de passe :");
+
+                        if (newPassword != null && !newPassword.trim().isEmpty()) {
+                            userService.updatePassword(login, newPassword);
+                            JOptionPane.showMessageDialog(this, "Mot de passe réinitialisé avec succès !");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Le mot de passe ne peut pas être vide.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Réponse incorrecte !");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Aucune question de sécurité enregistrée pour cet utilisateur.");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Erreur lors de la mise à jour du mot de passe.", "Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Login introuvable.");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Login introuvable.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le login ne peut pas être vide.");
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Le login ne peut pas être vide.", "Avertissement", JOptionPane.WARNING_MESSAGE);
-    }
     }//GEN-LAST:event_pwdforgottenMouseClicked
 
     /**
@@ -265,9 +280,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-private String generateTemporaryPassword() {
-    return UUID.randomUUID().toString().substring(0, 8); 
-}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

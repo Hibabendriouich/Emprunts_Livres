@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import utiles.SecurityUtil;
 
 public class UserService implements IUserDao {
 
@@ -91,4 +92,40 @@ public class UserService implements IUserDao {
         }
         return false;
     }
+     public boolean verifySecurityQuestion(String login, String reponse) {
+        String req = "SELECT reponse FROM user WHERE login = ?";
+        try {
+            PreparedStatement ps = connexion.getCn().prepareStatement(req);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String hashedReponseStockee = rs.getString("reponse");
+                String hashedReponseUtilisateur = SecurityUtil.hashSHA1(reponse);
+
+                return hashedReponseStockee.equals(hashedReponseUtilisateur);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+
+    public String getSecurityQuestion(String login) {
+        String req = "SELECT question FROM user WHERE login = ?";
+        try {
+            PreparedStatement ps = connexion.getCn().prepareStatement(req);
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("question");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
 }
+

@@ -68,4 +68,4 @@ MySQL : Pour la gestion de la base de données.
 SWING : Pour l'interface graphique et rendre l’application facile à utiliser.
 
 ## Vidéo démonstrative:
-[Demo](https://drive.google.com/file/d/1HlJwhkUKQWmpavf9GFGIvYN-0VCrLcZl/view?usp=sharing)
+[Démonstration](https://drive.google.com/drive/folders/1ZWNHGAYUtosgD6lb0h9_ikk8GwtjyBw4?usp=sharing)
