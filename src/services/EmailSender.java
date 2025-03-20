@@ -12,8 +12,8 @@ import java.util.Properties;
 public class EmailSender {
 
     public static void sendEmail(String toEmail, String newPassword) {
-        final String username = "h.bendriouich@elaraki.ac.ma"; 
-        final String password = "jtwe dzsa rscj mhwk"; 
+        final String username = "h.bendriouich6095@uca.ac.ma"; 
+        final String password = "Hiibaae@141204"; 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

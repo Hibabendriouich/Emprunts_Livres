@@ -66,3 +66,6 @@ CREATE TABLE emprunt (
 NetBeans (Java) : Pour le développement de l’application.
 MySQL : Pour la gestion de la base de données.
 SWING : Pour l'interface graphique et rendre l’application facile à utiliser.
+
+## Vidéo démonstrative:
+[Demo](https://drive.google.com/file/d/1HlJwhkUKQWmpavf9GFGIvYN-0VCrLcZl/view?usp=sharing)
