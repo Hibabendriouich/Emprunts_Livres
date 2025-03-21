@@ -49,7 +49,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(243, 243, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(200, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 100));
 
         login.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         login.setText("Login:");

@@ -18,7 +18,6 @@ public class Connexion {
     private final String login = "root";
     private final String password = "";
 
-    // Constructeur privé pour empêcher l'instanciation directe
     private Connexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -30,7 +29,6 @@ public class Connexion {
         }
     }
 
-    // Méthode d'accès à l'instance unique (avec synchronisation pour éviter les problèmes de concurrence)
     public static synchronized Connexion getInstance() {
         if (instance == null) {
             instance = new Connexion();
@@ -38,7 +36,6 @@ public class Connexion {
         return instance;
     }
 
-    // Méthode pour obtenir la connexion
     public Connection getCn() {
         return cn;
     }

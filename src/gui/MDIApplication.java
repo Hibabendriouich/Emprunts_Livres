@@ -46,8 +46,7 @@ public class MDIApplication extends javax.swing.JFrame {
         rechercheMenuItem = new javax.swing.JMenuItem();
         FiltrerMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        grapheMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,15 +110,16 @@ public class MDIApplication extends javax.swing.JFrame {
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        helpMenu.setText("Statistiques");
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        grapheMenuItem.setMnemonic('c');
+        grapheMenuItem.setText("Taux d’emprunt par catégorie ");
+        grapheMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grapheMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(grapheMenuItem);
 
         menuBar.add(helpMenu);
 
@@ -175,6 +175,13 @@ public class MDIApplication extends javax.swing.JFrame {
         f.setVisible(true);
     }//GEN-LAST:event_FiltrerMenuItemActionPerformed
 
+    private void grapheMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grapheMenuItemActionPerformed
+        closeAllInternalFrames();
+        GraphiqueEmprunts g = new GraphiqueEmprunts();
+        desktopPane.add(g);
+        g.setVisible(true);
+    }//GEN-LAST:event_grapheMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,11 +227,10 @@ public class MDIApplication extends javax.swing.JFrame {
     private javax.swing.JMenuItem FiltrerMenuItem;
     private javax.swing.JMenuItem LivreMenuItem;
     private javax.swing.JMenu Menu;
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem etudiantMenuItem;
+    private javax.swing.JMenuItem grapheMenuItem;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem rechercheMenuItem;

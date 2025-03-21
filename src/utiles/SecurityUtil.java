@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package utiles;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
