@@ -65,6 +65,8 @@ CREATE TABLE emprunt (
     FOREIGN KEY (idLivre) REFERENCES livre(id) ON DELETE CASCADE
 );
 ```
+## Architecture
+![Architecture](images/archi.PNG)
 
 ### Technologies Utilisées:
 
@@ -73,4 +75,6 @@ MySQL : Pour la gestion de la base de données.
 SWING : Pour l'interface graphique et rendre l’application facile à utiliser.
 
 ## Vidéo démonstrative:
-[Démonstration](https://drive.google.com/drive/folders/1ZWNHGAYUtosgD6lb0h9_ikk8GwtjyBw4?usp=sharing)
+<video width="100%" controls>
+  <source src="videos/demoApp" type="video/mp4">
+</video>
