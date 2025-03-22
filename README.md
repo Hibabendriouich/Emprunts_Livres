@@ -76,5 +76,5 @@ SWING : Pour l'interface graphique et rendre l’application facile à utiliser.
 
 ## Vidéo démonstrative:
 <video width="100%" controls>
-  <source src="videos/DemoApp" type="video/mp4">
+  <source src="videos/demo" type="video/mp4">
 </video>
