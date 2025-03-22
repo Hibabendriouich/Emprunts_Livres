@@ -29,6 +29,11 @@ L'objectif de ce projet est de développer une application qui simplifie la gest
 - **Visualisation des Données** : Graphique Pie Chart pour analyser le taux d'emprunt par catégorie de livre.
 
 ---
+## Diagramme de classes
+![Diagramme de classes](images/class.PNG)
+
+## Diagramme de cas d'utilisation
+![Diagramme de classes](images/usecase.PNG)
 
 ##  Requêtes sql pour la Base de Données
 
