@@ -68,7 +68,7 @@ CREATE TABLE emprunt (
 ## Architecture
 ![Architecture](images/archi.PNG)
 
-### Technologies Utilisées:
+## Technologies Utilisées:
 
 NetBeans (Java) : Pour le développement de l’application.
 MySQL : Pour la gestion de la base de données.
