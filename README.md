@@ -70,11 +70,15 @@ CREATE TABLE emprunt (
 
 ## Technologies Utilisées:
 
--**NetBeans (Java)** : Pour le développement de l’application.
--**MySQL**: Pour la gestion de la base de données.
--**SWING** : Pour l'interface graphique et rendre l’application facile à utiliser.
--**Bibliothèque graphique** : JFreeChart 
--**Outils de développement** :
+-**NetBeans (Java)** : Pour le développement de l’application.    
+
+-**MySQL**: Pour la gestion de la base de données.  
+
+-**SWING** : Pour l'interface graphique et rendre l’application facile à utiliser.  
+
+-**Bibliothèque graphique** : JFreeChart   
+
+-**Outils de développement** :  
     - **IDE Java** : NetBeans
     - **Conception** : MagicDraw
     -  **Outil de gestion de base de données** : phpMyAdmin
@@ -82,3 +86,6 @@ CREATE TABLE emprunt (
 
 ## Vidéo démonstrative:
 [Voir la vidéo](videos/demo.mp4)
+<video width="600" controls>
+  <source src="videos/demo.mp4" type="video/mp4">
+</video>
