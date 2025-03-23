@@ -33,7 +33,7 @@ L'objectif de ce projet est de développer une application qui simplifie la gest
 ![Logo](./images/logo.PNG)
 
 ## 📌 Diagramme de classes
-![Diagramme de classes](./images/class.PNG)
+![Diagramme de classes](./images/)
 
 ## 📌 Diagramme de cas d'utilisation
 ![Diagramme de cas d'utilisation](./images/usecase.PNG)
