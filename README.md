@@ -1,11 +1,11 @@
-# Gestion des Emprunts de Livres
+# 📚 Gestion des Emprunts de Livres  
 
-## Contexte
+## ❓ Contexte
 De nos jours la gestion des ressources devient de plus en plus complexe, les bibliothèques et institutions académiques sont confrontées à des défis importants pour suivre et gérer les emprunts de livres. Les systèmes manuels ou obsolètes ne permettent pas une gestion efficace des prêts et retours, ce qui peut entraîner des erreurs, des pertes de temps et une mauvaise expérience utilisateur.
 
 ---
 
-## Problématique
+## ❓ Problématique
 Les bibliothèques et institutions académiques ont besoin d'un système robuste et facile à utiliser pour gérer les emprunts de livres. Les systèmes actuels sont souvent inefficaces, ne permettant pas un suivi précis des emprunts, des retours, et des tendances d'utilisation des livres. Cela peut entraîner :
 - Des erreurs de gestion,
 - Des retards dans les retours,
@@ -13,7 +13,7 @@ Les bibliothèques et institutions académiques ont besoin d'un système robuste
 
 ---
 
-## Objectif
+## 🎯 Objectif
 L'objectif de ce projet est de développer une application qui simplifie la gestion des prêts et retours de livres pour les bibliothèques et institutions académiques. L'application doit :
 - Permettre un suivi précis des emprunts,
 - Offrir une vision claire des tendances d'utilisation des livres,
@@ -21,7 +21,7 @@ L'objectif de ce projet est de développer une application qui simplifie la gest
 
 ---
 
-## Fonctionnalités Principales
+## 🔑 Fonctionnalités Principales
 - **Gestion des Livres** : Ajout et suppression de livres.
 - **Enregistrement des Emprunts** : Suivi des emprunts et retours de livres.
 - **Filtrage des Emprunts** : Filtrage des emprunts par étudiant, livre, ou période.
@@ -29,15 +29,18 @@ L'objectif de ce projet est de développer une application qui simplifie la gest
 - **Visualisation des Données** : Graphique Pie Chart pour analyser le taux d'emprunt par catégorie de livre.
 
 ---
-## Diagramme de classes
-![Diagramme de classes](images/class.PNG)
+## 🏷️ Logo
+![Logo](./images/logo.PNG)
 
-## Diagramme de cas d'utilisation
-![Diagramme de classes](images/usecase.PNG)
+## 📌 Diagramme de classes
+![Diagramme de classes](./images/class.PNG)
 
-##  Requêtes sql pour la Base de Données
+## 📌 Diagramme de cas d'utilisation
+![Diagramme de cas d'utilisation](./images/usecase.PNG)
 
-### Tables
+## 🗄️ Requêtes SQL pour la Base de Données
+
+### 📌 Tables
 
 ```sql
 CREATE TABLE livre (
@@ -84,5 +87,5 @@ CREATE TABLE emprunt (
     -  **Outil de gestion de base de données** : phpMyAdmin
     - **Accès aux données** : JDBC
 
-## Vidéo démonstrative:
+## 🎥 Vidéo démonstrative:
 https://github.com/user-attachments/assets/576f3f84-115b-4ea8-83f1-ffb07b8d540d

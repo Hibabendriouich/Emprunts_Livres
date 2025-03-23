@@ -67,6 +67,7 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
         txtDateFin = new javax.swing.JLabel();
         dateFinPicker = new com.toedter.calendar.JDateChooser();
         btnFiltrerParDate = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listEmprunt = new javax.swing.JTable();
@@ -88,16 +89,23 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(800, 700));
+        setPreferredSize(new java.awt.Dimension(500, 500));
 
         jPanel1.setBackground(new java.awt.Color(242, 245, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtre Emprunts par Date", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(dateDebutPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 158, 28));
 
-        txtDateDebut.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtDateDebut.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        txtDateDebut.setForeground(new java.awt.Color(247, 241, 222));
         txtDateDebut.setText("Date Début:");
+        jPanel1.add(txtDateDebut, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        txtDateFin.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtDateFin.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        txtDateFin.setForeground(new java.awt.Color(247, 241, 222));
         txtDateFin.setText("Date Fin:");
+        jPanel1.add(txtDateFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jPanel1.add(dateFinPicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 158, 28));
 
         btnFiltrerParDate.setBackground(new java.awt.Color(0, 153, 255));
         btnFiltrerParDate.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -107,44 +115,10 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
                 btnFiltrerParDateActionPerformed(evt);
             }
         });
+        jPanel1.add(btnFiltrerParDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDateDebut)
-                    .addComponent(txtDateFin))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dateDebutPicker, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addComponent(dateFinPicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
-                .addComponent(btnFiltrerParDate)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(txtDateDebut)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtDateFin))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(dateDebutPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dateFinPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnFiltrerParDate)
-                .addGap(38, 38, 38))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dateemp.PNG"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 490, 210));
 
         jPanel2.setBackground(new java.awt.Color(242, 245, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des emprunts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
@@ -164,11 +138,13 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,10 +157,10 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(317, 317, 317))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -210,6 +186,7 @@ public class FilterEmpruntForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFiltrerParDate;
     private com.toedter.calendar.JDateChooser dateDebutPicker;
     private com.toedter.calendar.JDateChooser dateFinPicker;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

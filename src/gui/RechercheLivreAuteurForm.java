@@ -68,6 +68,7 @@ public class RechercheLivreAuteurForm extends javax.swing.JInternalFrame {
         txtAuteurRechercher = new javax.swing.JTextField();
         btnRechercherLivre = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableRecherche = new javax.swing.JTable();
@@ -80,45 +81,28 @@ public class RechercheLivreAuteurForm extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(242, 245, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recherche des livres par auteurs", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtRechercherAuteur.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtRechercherAuteur.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        txtRechercherAuteur.setForeground(new java.awt.Color(250, 239, 223));
         txtRechercherAuteur.setText("Auteur: ");
+        jPanel1.add(txtRechercherAuteur, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 143, -1));
+        jPanel1.add(txtAuteurRechercher, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 160, 30));
 
         btnRechercherLivre.setBackground(new java.awt.Color(0, 153, 255));
         btnRechercherLivre.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnRechercherLivre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-chercher-50 (1) (1).png"))); // NOI18N
         btnRechercherLivre.setText("Rechercher");
         btnRechercherLivre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRechercherLivreActionPerformed(evt);
             }
         });
+        jPanel1.add(btnRechercherLivre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(728, 37, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(txtRechercherAuteur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAuteurRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnRechercherLivre)
-                .addGap(257, 257, 257)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAuteurRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRechercherAuteur)
-                    .addComponent(btnRechercherLivre)
-                    .addComponent(jLabel1))
-                .addGap(37, 37, 37))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/auteur.PNG"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(242, 245, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des livres résultants de la recherche", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N
@@ -152,16 +136,17 @@ public class RechercheLivreAuteurForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(636, 636, 636))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -196,6 +181,7 @@ public class RechercheLivreAuteurForm extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRechercherLivre;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

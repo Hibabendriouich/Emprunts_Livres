@@ -29,7 +29,6 @@ public class GraphiqueEmprunts extends javax.swing.JInternalFrame {
     public GraphiqueEmprunts() {
         setTitle("Taux d'Emprunt par Catégorie");
         setSize(900, 800);
-        setDefaultCloseOperation(JInternalFrame.DO_NOTHING_ON_CLOSE);
         setLocation(50, 50);
 
         JFreeChart chart = ChartFactory.createPieChart(
