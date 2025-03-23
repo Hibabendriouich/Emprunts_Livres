@@ -161,7 +161,7 @@ public class Main extends javax.swing.JFrame {
                         message.setFrom(new InternetAddress("h.bendriouich@elaraki.ac.ma"));
                         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
                         message.setSubject("Récupération de mot de passe");
-                        String messageContent = "Bonjour "+login+" ,\n\nVotre nouveau mot de passe est : " + nouveauMotDePasse;
+                        String messageContent = "Bonjour " + login + " ,\n\nVotre nouveau mot de passe est : " + nouveauMotDePasse;
                         message.setText(messageContent);
 
                         Transport.send(message);
@@ -222,7 +222,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

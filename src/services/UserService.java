@@ -67,32 +67,35 @@ public class UserService implements IUserDao {
         }
         return false;
     }
+
     public boolean userExists(String login) {
         String req = "SELECT * FROM user WHERE login = ?";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setString(1, login);
             ResultSet rs = ps.executeQuery();
-            return rs.next(); 
+            return rs.next();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return false;
-    }  
-     public boolean updatePassword(String login, String newPassword) {
+    }
+
+    public boolean updatePassword(String login, String newPassword) {
         String req = "UPDATE user SET password = SHA1(?) WHERE login = ?";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
             ps.setString(1, newPassword);
             ps.setString(2, login);
             int rowsUpdated = ps.executeUpdate();
-            return rowsUpdated > 0; 
+            return rowsUpdated > 0;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return false;
     }
-     public boolean verifySecurityQuestion(String login, String reponse) {
+
+    public boolean verifySecurityQuestion(String login, String reponse) {
         String req = "SELECT reponse FROM user WHERE login = ?";
         try {
             PreparedStatement ps = connexion.getCn().prepareStatement(req);
@@ -126,6 +129,7 @@ public class UserService implements IUserDao {
         }
         return null;
     }
+
     public boolean changerMotDePasse(String login, String nouveauMotDePasse) {
         String req = "UPDATE user SET password = SHA1(?) WHERE login = ?";
         try {
@@ -152,22 +156,18 @@ public class UserService implements IUserDao {
         }
         return false;
     }
-    
+
     public boolean updatePassword(String newPassword) {
-    // Exemple fictif - adapte selon ta base de données
-    try {
-        // Requête SQL fictive
-        String query = "UPDATE users SET password = ? WHERE username = 'user1'";
-        System.out.println("Mot de passe mis à jour : " + newPassword);
-        return true;
-    } catch (Exception e) {
-        e.printStackTrace();
-        return false;
+        // Exemple fictif - adapte selon ta base de données
+        try {
+            // Requête SQL fictive
+            String query = "UPDATE users SET password = ? WHERE username = 'user1'";
+            System.out.println("Mot de passe mis à jour : " + newPassword);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
-
-        
-        
 
 }
-

@@ -38,7 +38,7 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         loadLivre();
         loadEtudiant();
         load();
-        
+
     }
 
     /**
@@ -178,7 +178,7 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
             listEtudiantEmprunt.addItem(e);
         }
     }
-    
+
     private void bnSaveEmpruntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnSaveEmpruntActionPerformed
         Livre livre = (Livre) listLivreEmprunt.getSelectedItem();
         Etudiant etudiant = (Etudiant) listEtudiantEmprunt.getSelectedItem();
@@ -186,14 +186,14 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         Date dateRetour = date_Retour.getDate();
 
         if (livre == null || etudiant == null || dateEmprunt == null || dateRetour == null) {
-            JOptionPane.showMessageDialog(this, "Veuillez renseigner tous les champs.","Avertissement", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Veuillez renseigner tous les champs.", "Avertissement", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if (emps.create(new Emprunt(dateEmprunt, dateRetour, livre, etudiant))) {
-            JOptionPane.showMessageDialog(this, "Emprunt enregistré avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Emprunt enregistré avec succès!", "Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'emprunt.","Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement de l'emprunt.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
 
         load();

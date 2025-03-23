@@ -181,15 +181,15 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
         String prenom = txtPrenom.getText().toString();
         String email = txtEmail.getText().toString();
         if (es.create(new Etudiant(nom, prenom, email))) {
-            JOptionPane.showMessageDialog(this, "Etudiant enregistré avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Etudiant enregistré avec succès!", "Information", JOptionPane.INFORMATION_MESSAGE);
             load();
         } else {
-            JOptionPane.showConfirmDialog(this, "Echec d'enregistrement.","Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showConfirmDialog(this, "Echec d'enregistrement.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bnAddEtudiantActionPerformed
 
     private void bnDeleteEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer cet étudiant?","Avertissement", JOptionPane.WARNING_MESSAGE);
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer cet étudiant?", "Avertissement", JOptionPane.WARNING_MESSAGE);
         if (response == 0) {
             es.delete(es.findById(id));
             load();
@@ -204,16 +204,16 @@ public class EtudiantForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listeEtudiantsMouseClicked
 
     private void bnUpdateEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnUpdateEtudiantActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous modifier les informations de cet étudiant?","Avertissement", JOptionPane.WARNING_MESSAGE);
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous modifier les informations de cet étudiant?", "Avertissement", JOptionPane.WARNING_MESSAGE);
         if (response == 0) {
             String nom = txtNom.getText().toString();
             String prenom = txtPrenom.getText().toString();
             String email = txtEmail.getText().toString();
             if (es.update(new Etudiant(id, nom, prenom, email))) {
-                JOptionPane.showMessageDialog(this, "Inforrmations mises à jour avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Inforrmations mises à jour avec succès!", "Information", JOptionPane.INFORMATION_MESSAGE);
                 load();
             } else {
-                JOptionPane.showConfirmDialog(this, "Echec de mise à jour.","Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showConfirmDialog(this, "Echec de mise à jour.", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
 
         }

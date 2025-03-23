@@ -49,44 +49,47 @@ public class GraphiqueEmprunts extends javax.swing.JInternalFrame {
     }
 
     private DefaultPieDataset getDataset() {
-    DefaultPieDataset dataset = new DefaultPieDataset();
-    Connection connexion = null;
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        Connection connexion = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
-    try {
-        connexion = Connexion.getInstance().getCn();
-        
-        if (connexion == null || connexion.isClosed()) {
-            System.out.println("Erreur : Connexion fermée !");
-            return dataset; // Retourne un dataset vide pour éviter l'erreur
-        }
-
-        String sql = "SELECT categorie, COUNT(*) as total FROM livre GROUP BY categorie";
-        stmt = connexion.prepareStatement(sql);
-        rs = stmt.executeQuery();
-
-        while (rs.next()) {
-            String categorie = rs.getString("categorie");
-            int total = rs.getInt("total");
-            dataset.setValue(categorie, total);
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
         try {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            // Ne pas fermer la connexion ici si elle doit être réutilisée
+            connexion = Connexion.getInstance().getCn();
+
+            if (connexion == null || connexion.isClosed()) {
+                System.out.println("Erreur : Connexion fermée !");
+                return dataset; // Retourne un dataset vide pour éviter l'erreur
+            }
+
+            String sql = "SELECT categorie, COUNT(*) as total FROM livre GROUP BY categorie";
+            stmt = connexion.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String categorie = rs.getString("categorie");
+                int total = rs.getInt("total");
+                dataset.setValue(categorie, total);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                // Ne pas fermer la connexion ici si elle doit être réutilisée
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
+        return dataset;
     }
-
-    return dataset;
-}
-
 
     private void customizeChart(JFreeChart chart) {
         TextTitle title = new TextTitle("Taux d'Emprunt par Catégorie de Livres");
@@ -109,9 +112,9 @@ public class GraphiqueEmprunts extends javax.swing.JInternalFrame {
         plot.setLabelBackgroundPaint(Color.WHITE);
 
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator(
-                "{0}: {1} ({2})", 
-                new java.text.DecimalFormat("0"), 
-                new java.text.DecimalFormat("0%") 
+                "{0}: {1} ({2})",
+                new java.text.DecimalFormat("0"),
+                new java.text.DecimalFormat("0%")
         ));
         chart.getLegend().setBackgroundPaint(new Color(220, 220, 220));
         chart.getLegend().setItemFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 12));

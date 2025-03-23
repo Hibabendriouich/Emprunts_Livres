@@ -12,8 +12,8 @@ import java.util.Properties;
 public class EmailSender {
 
     public static void sendEmail(String toEmail, String newPassword) {
-        final String username = "h.bendriouich6095@uca.ac.ma"; 
-        final String password = "Hiibaae@141204"; 
+        final String username = "h.bendriouich6095@uca.ac.ma";
+        final String password = "Hiibaae@141204";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -23,18 +23,18 @@ public class EmailSender {
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
-            } 
-        }); 
+            }
+        });
 
         try {
-            MimeMessage message = new MimeMessage(session);  
-            message.setFrom(new InternetAddress(username));  
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("Réinitialisation de votre mot de passe");
-            message.setText("Votre nouveau mot de passe temporaire est : " + newPassword +
-                            "\nVeuillez vous connecter et changer votre mot de passe immédiatement.");
+            message.setText("Votre nouveau mot de passe temporaire est : " + newPassword
+                    + "\nVeuillez vous connecter et changer votre mot de passe immédiatement.");
         } catch (MessagingException e) {
-            e.printStackTrace();  
+            e.printStackTrace();
             throw new RuntimeException("Erreur lors de l'envoi de l'email : " + e.getMessage());
         }
     }

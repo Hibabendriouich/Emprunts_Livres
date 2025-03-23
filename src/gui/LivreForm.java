@@ -210,16 +210,16 @@ public class LivreForm extends javax.swing.JInternalFrame {
         ECategorie categorie = ECategorie.valueOf(selectedCategory);
 
         if (titre.isEmpty() || auteur.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Le titre et l'auteur sont obligatoires.","Avertissement", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Le titre et l'auteur sont obligatoires.", "Avertissement", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         boolean disponible = oui.isSelected();
 
         if (ls.create(new Livre(titre, auteur, categorie, disponible))) {
-            JOptionPane.showMessageDialog(this, "Livre enregistré avec succès!","Information", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Livre enregistré avec succès!", "Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement du livre.","Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erreur lors de l'enregistrement du livre.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         loadLivre();
     }//GEN-LAST:event_bnAddLivreActionPerformed
@@ -238,7 +238,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_listCategorieActionPerformed
 
     private void bnDeleteLivreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnDeleteLivreActionPerformed
-        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer ce livre?","Information", JOptionPane.INFORMATION_MESSAGE);
+        int response = JOptionPane.showConfirmDialog(this, "Voulez-vous vraiment supprimer ce livre?", "Information", JOptionPane.INFORMATION_MESSAGE);
         if (response == 0) {
             int selectedRow = livreList.getSelectedRow();
             if (selectedRow != -1) {
@@ -246,7 +246,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
                 ls.delete(ls.findById(id));
                 loadLivre();
             } else {
-                JOptionPane.showMessageDialog(this, "Aucun livre sélectionné.","Avertissement", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Aucun livre sélectionné.", "Avertissement", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_bnDeleteLivreActionPerformed
