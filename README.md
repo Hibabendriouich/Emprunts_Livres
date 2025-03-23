@@ -66,7 +66,14 @@ CREATE TABLE emprunt (
     PRIMARY KEY (idEtudiant, idLivre),
     FOREIGN KEY (idEtudiant) REFERENCES etudiant(id) ON DELETE CASCADE,
     FOREIGN KEY (idLivre) REFERENCES livre(id) ON DELETE CASCADE
+);  
+
+CREATE TABLE user (
+    login VARCHAR(100) NOT NULL PRIMARY KEY,
+    password VARCHAR(100) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE
 );
+
 ```
 ## Architecture
 ![Architecture](images/archi.PNG)
