@@ -73,35 +73,31 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         setMinimumSize(new java.awt.Dimension(400, 100));
         setPreferredSize(new java.awt.Dimension(630, 600));
 
-        jPanel1.setBackground(new java.awt.Color(243, 241, 236));
+        jPanel1.setBackground(new java.awt.Color(240, 240, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des empruns", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(243, 236, 219));
         jLabel1.setText("Livre:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 50, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(243, 236, 219));
         jLabel2.setText("Etudiant:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 82, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(243, 236, 219));
         jLabel3.setText("Date Emprunt:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 120, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(243, 236, 219));
         jLabel4.setText("Date Retour:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 165, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         listLivreEmprunt.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         listLivreEmprunt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Not Without My Daughter", "Le Dernier Jour D'un Condmané", "La boîte à merveilles" }));
-        jPanel1.add(listLivreEmprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 49, -1, -1));
-        jPanel1.add(date_Emprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 120, 180, -1));
-        jPanel1.add(date_Retour, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 160, 180, -1));
+        jPanel1.add(listLivreEmprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
+        jPanel1.add(date_Emprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 180, -1));
+        jPanel1.add(date_Retour, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 180, -1));
 
         bnSaveEmprunt.setBackground(new java.awt.Color(0, 204, 51));
         bnSaveEmprunt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -111,16 +107,16 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
                 bnSaveEmpruntActionPerformed(evt);
             }
         });
-        jPanel1.add(bnSaveEmprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
+        jPanel1.add(bnSaveEmprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
 
         listEtudiantEmprunt.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         listEtudiantEmprunt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hiba Bend", "Fati Enn", "Mery Abbadi" }));
-        jPanel1.add(listEtudiantEmprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 82, 180, -1));
+        jPanel1.add(listEtudiantEmprunt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 180, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/emprunt.PNG"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Capture-removebg-preview (1).png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 180, -1));
 
-        jPanel2.setBackground(new java.awt.Color(243, 241, 236));
+        jPanel2.setBackground(new java.awt.Color(240, 240, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Liste des emprunts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
 
         listEmprunt.setModel(new javax.swing.table.DefaultTableModel(
@@ -152,15 +148,15 @@ public class EmpruntForm extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGap(0, 42, Short.MAX_VALUE))
         );
 
         pack();
