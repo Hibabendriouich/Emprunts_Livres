@@ -58,7 +58,7 @@ public class LivreForm extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(800, 700));
+        setPreferredSize(new java.awt.Dimension(680, 540));
 
         jPanel1.setBackground(new java.awt.Color(247, 240, 225));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion des livres", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 18))); // NOI18N

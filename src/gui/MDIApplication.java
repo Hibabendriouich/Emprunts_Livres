@@ -45,8 +45,7 @@ public class MDIApplication extends javax.swing.JFrame {
         editMenu = new javax.swing.JMenu();
         rechercheMenuItem = new javax.swing.JMenuItem();
         FiltrerMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        grapheMenuItem = new javax.swing.JMenuItem();
+        statMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,19 +108,13 @@ public class MDIApplication extends javax.swing.JFrame {
 
         menuBar.add(editMenu);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Statistiques");
-
-        grapheMenuItem.setMnemonic('c');
-        grapheMenuItem.setText("Taux d’emprunt par catégorie ");
-        grapheMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grapheMenuItemActionPerformed(evt);
+        statMenu.setText("Taux d’emprunt par catégorie ");
+        statMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                statMenuMouseClicked(evt);
             }
         });
-        helpMenu.add(grapheMenuItem);
-
-        menuBar.add(helpMenu);
+        menuBar.add(statMenu);
 
         setJMenuBar(menuBar);
 
@@ -175,12 +168,12 @@ public class MDIApplication extends javax.swing.JFrame {
         f.setVisible(true);
     }//GEN-LAST:event_FiltrerMenuItemActionPerformed
 
-    private void grapheMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grapheMenuItemActionPerformed
+    private void statMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statMenuMouseClicked
         closeAllInternalFrames();
         GraphiqueEmprunts g = new GraphiqueEmprunts();
         desktopPane.add(g);
         g.setVisible(true);
-    }//GEN-LAST:event_grapheMenuItemActionPerformed
+    }//GEN-LAST:event_statMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -230,11 +223,10 @@ public class MDIApplication extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem etudiantMenuItem;
-    private javax.swing.JMenuItem grapheMenuItem;
-    private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem rechercheMenuItem;
     private javax.swing.JMenuItem saveAsMenuEmprunts;
+    private javax.swing.JMenu statMenu;
     // End of variables declaration//GEN-END:variables
 
 }

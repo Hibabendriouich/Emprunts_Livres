@@ -49,25 +49,44 @@ public class GraphiqueEmprunts extends javax.swing.JInternalFrame {
     }
 
     private DefaultPieDataset getDataset() {
-        DefaultPieDataset dataset = new DefaultPieDataset();
+    DefaultPieDataset dataset = new DefaultPieDataset();
+    Connection connexion = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
 
-        try (Connection connexion = Connexion.getInstance().getCn()) {
-            String sql = "SELECT categorie, COUNT(*) as total FROM livre GROUP BY categorie";
-            PreparedStatement stmt = connexion.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+    try {
+        connexion = Connexion.getInstance().getCn();
+        
+        if (connexion == null || connexion.isClosed()) {
+            System.out.println("Erreur : Connexion fermée !");
+            return dataset; // Retourne un dataset vide pour éviter l'erreur
+        }
 
-            while (rs.next()) {
-                String categorie = rs.getString("categorie");
-                int total = rs.getInt("total");
-                dataset.setValue(categorie, total);
-            }
+        String sql = "SELECT categorie, COUNT(*) as total FROM livre GROUP BY categorie";
+        stmt = connexion.prepareStatement(sql);
+        rs = stmt.executeQuery();
 
+        while (rs.next()) {
+            String categorie = rs.getString("categorie");
+            int total = rs.getInt("total");
+            dataset.setValue(categorie, total);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            // Ne pas fermer la connexion ici si elle doit être réutilisée
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return dataset;
     }
+
+    return dataset;
+}
+
 
     private void customizeChart(JFreeChart chart) {
         TextTitle title = new TextTitle("Taux d'Emprunt par Catégorie de Livres");

@@ -88,4 +88,4 @@ CREATE TABLE emprunt (
     - **Accès aux données** : JDBC
 
 ## 🎥 Vidéo démonstrative:
-https://github.com/user-attachments/assets/d7c76ac1-f8ab-4185-9e38-f6ad334448a7
+https://github.com/user-attachments/assets/f8d5cf38-471a-4025-9acd-f27b01a38f8f
