@@ -95,4 +95,4 @@ CREATE TABLE user (
     - **Accès aux données** : JDBC
 
 ## 🎥 Vidéo démonstrative:
-https://github.com/user-attachments/assets/f8d5cf38-471a-4025-9acd-f27b01a38f8f
+https://github.com/user-attachments/assets/3ef9dbd3-7744-4d4e-b40b-92d4b5dc6a0c
